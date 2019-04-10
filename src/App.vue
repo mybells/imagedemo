@@ -3,7 +3,7 @@
   <viewer :images="imageArr">
     <waterfall :align="align" :grow="grow" :line-gap="200" :watch="items" @reflowed="reflowed" ref="waterfall">
       <waterfall-slot v-for="(item, index) in items" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="item-move">
-        <img class="item" :title="item.datetime" :id="'item'+item.index" style="width:100%" :index="item.index" :src="item.path">
+        <img class="item" :title="item.datetime" :id="'item'+item.index" style="width:100%;height:100%" :index="item.index" :src="item.path">
       </waterfall-slot>
     </waterfall>
   </viewer>
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      grow: [1.5, 1, 1, 1],
+      grow: [2, 1, 1, 1],
       imageArr: [],
       align: 'center',
       items: [],
@@ -36,8 +36,8 @@ export default {
     _this.imageArr.forEach(function (str, i) {
       _this.items[i] = {
         index: i++,
-        width: 100 + ~~(Math.random() * 50),
-        height: 100 + ~~(Math.random() * 50),
+        width: 1,
+        height: 1,
         path: str,
         datetime: '',
         lon: '',
@@ -66,7 +66,7 @@ export default {
           // _this.items[i].lat = _this.DegreeConvertBack(`${obj.GPSLatitude[0].numerator}°${obj.GPSLatitude[1].numerator}'${obj.GPSLatitude[2].numerator}"`)
           // _this.items[i].lon = _this.DegreeConvertBack(`${obj.GPSLongitude[0].numerator}°${obj.GPSLongitude[1].numerator}'${obj.GPSLongitude[2].numerator}"`)
           // _this.items[i].orientation = obj.Orientation;
-          // _this.items[i].width = obj.ImageWidth/12;
+          // _this.items[i].width = obj.ImageWidth/12; 
           // _this.items[i].height = obj.ImageHeight/12;
         });
       })()
